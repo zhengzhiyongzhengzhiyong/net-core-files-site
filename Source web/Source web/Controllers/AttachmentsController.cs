@@ -34,20 +34,26 @@ namespace Source_web.Controllers
 
                 var uniqueFileName = GetUniqueFileName(file.FileName);
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
-                var path = Path.Combine(hostingEnvironment.ContentRootPath, "uploads", date, uniqueFileName);
+                var dirpath = Path.Combine(hostingEnvironment.ContentRootPath, "uploads", date);
 
+                if (!Directory.Exists(dirpath))
+                {
+                    Directory.CreateDirectory(dirpath);
+                }
+
+                var filePath = Path.Combine(dirpath,uniqueFileName);
                 //var filePath = Path.GetTempFileName();
                 //var fileName = Path.GetTempFileName();
 
                 if (file.Length > 0)
                 {
-                    using (var stream = new FileStream(path, FileMode.Create))
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
                     }
                 }
 
-                return Ok(new { uniqueFileName, path });
+                return Ok(new { uniqueFileName, filePath });
             }
             catch (Exception exp)
             {
@@ -56,13 +62,15 @@ namespace Source_web.Controllers
             }
         }
 
+        /// <summary>
+        /// 获取文件名
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         private string GetUniqueFileName(string fileName)
         {
             fileName = Path.GetFileName(fileName);
-            return Path.GetFileNameWithoutExtension(fileName)
-                      + "_"
-                      + Guid.NewGuid().ToString().Substring(0, 4)
-                      + Path.GetExtension(fileName);
+            return  Guid.NewGuid().ToString()+ Path.GetExtension(fileName);
         }
 
         [HttpPost]
