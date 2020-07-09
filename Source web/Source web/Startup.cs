@@ -30,13 +30,16 @@ namespace Source_web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowCredentials().AllowAnyHeader());
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
+        {            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -48,6 +51,7 @@ namespace Source_web
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseCors("AllowOrigin");
 
             app.UseMvc(routes =>
             {
