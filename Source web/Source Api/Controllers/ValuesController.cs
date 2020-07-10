@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Source_Api.Controllers
@@ -10,36 +11,37 @@ namespace Source_Api.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        [Authorize(Policy = "Administrator")]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
+        [Authorize(Policy = "Permission")]
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
             return "value";
         }
 
-        // POST api/values
+        [Authorize(Policy = "APIAccess")]
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/values/5
+        [Authorize]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
+        [Authorize(Policy = "Administrator")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
         }
     }
 }

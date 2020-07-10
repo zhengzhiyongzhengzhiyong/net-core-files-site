@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Source Api</name>
+    </assembly>
+    <members>
+        <member name="T:Source_Api.Controllers.FilesController">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <member name="M:Source_Api.Controllers.FilesController.Upload(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            上传
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Source_Api.Controllers.FilesController.DownLoad(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            下载
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Source_Api.Controllers.UserController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Source_Api.Controllers.UserController.#ctor(Source_Api.Helper.AuthHelper.Authentication.IJwtFactory,Microsoft.Extensions.Options.IOptions{Source_Api.Helper.AuthHelper.Authentication.JwtIssuerOptions},Source_Api.IUserService,Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <summary>
+            
+            </summary>
+            <param name="jwtFactory"></param>
+            <param name="jwtOptions"></param>
+            <param name="userService"></param>
+            <param name="cache"></param>
+        </member>
+        <member name="M:Source_Api.Controllers.UserController.Login(Source_Api.Models.LoginRequest)">
+            <summary>
+            Log in
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Source_Api.Controllers.UserController.RefreshToken(Source_Api.Models.RefreshTokenRequest)">
+            <summary>
+            RefreshToken
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Source_Api.Controllers.UserController.GetUserInfo">
+            <summary>
+            Get User Info
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Source_Api.Helper.AuthHelper.Authentication.JwtFactory.ToUnixEpochDate(System.DateTime)">
+            <returns>Date converted to seconds since Unix epoch (Jan 1, 1970, midnight UTC).</returns>
+        </member>
+        <member name="T:Source_Api.Helper.AuthHelper.Authentication.JwtIssuerOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Source_Api.Models.LoginRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Source_Api.Models.LoginRequest.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Source_Api.Models.LoginRequest.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+    </members>
+</doc>
