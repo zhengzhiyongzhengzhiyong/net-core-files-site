@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +15,14 @@ namespace Source_Api.Controllers
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [AllowAnonymous]
     public class FilesController : ControllerBase
     {
         private readonly IHostingEnvironment hostingEnvironment;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="environment"></param>
         public FilesController(IHostingEnvironment environment)
         {
             hostingEnvironment = environment;

@@ -20,11 +20,18 @@ using Source_Api.Helper.AuthHelper.Authorization;
 
 namespace Source_Api
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
         private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // todo: get this from somewhere secure
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(SecretKey));
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
